@@ -152,7 +152,8 @@ extension SelectionViewController: UITableViewDelegate {
             // Add
             if self.currentStep == .Ingredients {
                 var currentValues = selection[self.currentStep] ?? [String]()
-                if !currentValues.contains(value) {
+                if !currentValues.contains(value) &&
+                currentValues.count < 5 {
                     currentValues.append(value)
                 }
                 selection[self.currentStep] = currentValues
