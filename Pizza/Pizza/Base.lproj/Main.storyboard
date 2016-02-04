@@ -85,7 +85,19 @@
                     <view key="view" contentMode="scaleToFill" id="Zdp-TJ-abg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="e0q-WH-xzG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xj6-0a-1Pa" firstAttribute="top" secondItem="e0q-WH-xzG" secondAttribute="bottom" id="9dc-Ch-snF"/>
+                            <constraint firstItem="e0q-WH-xzG" firstAttribute="leading" secondItem="Zdp-TJ-abg" secondAttribute="leading" id="QO0-Kb-VJu"/>
+                            <constraint firstAttribute="trailing" secondItem="e0q-WH-xzG" secondAttribute="trailing" id="XWc-9x-aL8"/>
+                            <constraint firstItem="e0q-WH-xzG" firstAttribute="top" secondItem="Zdp-TJ-abg" secondAttribute="top" id="e90-5u-s5j"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Confirmación" id="5W2-fT-Zwb">
                         <barButtonItem key="leftBarButtonItem" title="Cancelar" id="Rxi-60-9sv">
@@ -99,6 +111,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="e0q-WH-xzG" id="Dwf-be-azA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYe-bJ-mQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

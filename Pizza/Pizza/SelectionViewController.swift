@@ -14,14 +14,28 @@ enum Steps: Int {
     case Type
     case Cheese
     case Ingredients
+    
+    static let values: [Steps] = [.Size, .Type, .Cheese, .Ingredients]
+    func pretty() -> String {
+        switch self {
+        case .Size:
+            return "Tamaño"
+        case .Type:
+            return "Tipo"
+        case .Cheese:
+            return "Queso"
+        case .Ingredients:
+            return "Ingredientes"
+        }
+    }
 }
 
-let sizes = ["chica", "mediana", "grande"]
-let types = ["delgada", "crujiente", "gruesa"]
-let cheeses = ["mozarela", "cheddat", "parmesano", "sin queso"]
-let ingredients = ["jamón", "pepperoni", "pavo", "salchicha", "aceituna", "cebolla", "pimiento", "piña", "anchoa"]
+private let sizes = ["chica", "mediana", "grande"]
+private let types = ["delgada", "crujiente", "gruesa"]
+private let cheeses = ["mozarela", "cheddar", "parmesano", "sin queso"]
+private let ingredients = ["jamón", "pepperoni", "pavo", "salchicha", "aceituna", "cebolla", "pimiento", "piña", "anchoa"]
 
-var selection = [Steps: [String]]()
+private var selection = [Steps: [String]]()
 
 //MARK: Actions
 extension SelectionViewController {
@@ -39,7 +53,8 @@ extension SelectionViewController {
     }
 }
 
-class SelectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+//MARK: Life cycle
+class SelectionViewController: UIViewController {
     static let identifier = "SelectionViewController"
     @IBOutlet weak var tableView: UITableView!
 
@@ -51,18 +66,21 @@ class SelectionViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        switch currentStep {
-        case .Size:
-             self.title = "Tamaño"
-        case .Type:
-             self.title = "Tipo"
-        case .Cheese:
-             self.title = "Queso"
-        case .Ingredients:
-             self.title = "Ingredientes"
-        }
-
+        self.title = currentStep.pretty()
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetailsController" {
+            let validationController = (segue.destinationViewController as! UINavigationController).viewControllers.first as! ValidationViewController
+            validationController.selection = selection
+        }
+        
+    }
+}
+
+
+//MARK: UITableViewDataSource
+extension SelectionViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch currentStep {
@@ -76,6 +94,10 @@ class SelectionViewController: UIViewController, UITableViewDelegate, UITableVie
             return ingredients.count
         }
     }
+}
+
+//MARK: UITableViewDelegate
+extension SelectionViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: "default")
@@ -141,4 +163,3 @@ class SelectionViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.reloadData()
     }
 }
-

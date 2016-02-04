@@ -58,11 +58,11 @@
 			children = (
 				9DAE2DA81C63AE640074CE41 /* AppDelegate.swift */,
 				9DAE2DAA1C63AE640074CE41 /* SelectionViewController.swift */,
+				9DAE2DBA1C63AFF80074CE41 /* ValidationViewController.swift */,
 				9DAE2DAC1C63AE640074CE41 /* Main.storyboard */,
 				9DAE2DAF1C63AE640074CE41 /* Assets.xcassets */,
 				9DAE2DB11C63AE640074CE41 /* LaunchScreen.storyboard */,
 				9DAE2DB41C63AE640074CE41 /* Info.plist */,
-				9DAE2DBA1C63AFF80074CE41 /* ValidationViewController.swift */,
 			);
 			path = Pizza;
 			sourceTree = "<group>";
@@ -288,6 +288,7 @@
 				9DAE2DB91C63AE640074CE41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
