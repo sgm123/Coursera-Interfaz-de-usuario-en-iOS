@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="U00-P2-Hh8">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--Selection View Controller-->
+        <scene sceneID="WCe-ml-RrV">
+            <objects>
+                <viewController storyboardIdentifier="SelectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VtV-NC-baA" customClass="SelectionViewController" customModule="Pizza" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JFO-Us-yLs"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Vn-dl-pft"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iig-eR-jy3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2K-YN-IY0">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qHo-3e-wAC"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jrc-dl-XXn"/>
+                                    <barButtonItem title="Continuar" id="R3Y-te-GiF">
+                                        <connections>
+                                            <action selector="nextButtonAction:" destination="VtV-NC-baA" id="x6f-hG-oN6"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7k9-xL-swx"/>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="is2-lh-3XC">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9Vn-dl-pft" firstAttribute="top" secondItem="n2K-YN-IY0" secondAttribute="bottom" id="3Q0-9m-fil"/>
+                            <constraint firstItem="n2K-YN-IY0" firstAttribute="leading" secondItem="iig-eR-jy3" secondAttribute="leading" id="Lrl-aF-bHf"/>
+                            <constraint firstItem="is2-lh-3XC" firstAttribute="top" secondItem="JFO-Us-yLs" secondAttribute="bottom" id="M7b-Fg-aKj"/>
+                            <constraint firstItem="n2K-YN-IY0" firstAttribute="top" secondItem="is2-lh-3XC" secondAttribute="bottom" id="PCH-xX-MhP"/>
+                            <constraint firstAttribute="trailing" secondItem="n2K-YN-IY0" secondAttribute="trailing" id="ZoX-40-kBC"/>
+                            <constraint firstAttribute="trailing" secondItem="is2-lh-3XC" secondAttribute="trailing" id="iar-sk-cBC"/>
+                            <constraint firstItem="is2-lh-3XC" firstAttribute="leading" secondItem="iig-eR-jy3" secondAttribute="leading" id="kF9-5s-5Xp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3aH-ie-2p7"/>
+                    <connections>
+                        <outlet property="tableView" destination="is2-lh-3XC" id="mia-y4-Qsg"/>
+                        <segue destination="cPk-TP-O9k" kind="presentation" identifier="showDetailsController" id="s9t-Hq-s0c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u0N-us-mHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="289"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="08S-dq-crI">
+            <objects>
+                <navigationController id="cPk-TP-O9k" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bha-0M-Sfn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zpU-FC-IaZ" kind="relationship" relationship="rootViewController" id="dKq-bM-GjT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="faI-H1-cPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2620" y="289"/>
+        </scene>
+        <!--Confirmación-->
+        <scene sceneID="PXt-OW-JBw">
+            <objects>
+                <viewController storyboardIdentifier="ValidationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zpU-FC-IaZ" customClass="ValidationViewController" customModule="Pizza" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vQs-wT-uvb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xj6-0a-1Pa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zdp-TJ-abg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Confirmación" id="5W2-fT-Zwb">
+                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="Rxi-60-9sv">
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="zpU-FC-IaZ" id="rNl-wl-1v1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Confirmar" id="hNv-jM-YT8">
+                            <connections>
+                                <action selector="acceptButtonAction:" destination="zpU-FC-IaZ" id="flE-6j-1gP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wYe-bJ-mQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3320" y="289"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="83m-gt-pqI">
+            <objects>
+                <navigationController id="U00-P2-Hh8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8we-Nx-w7w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VtV-NC-baA" kind="relationship" relationship="rootViewController" id="AVc-BB-2SB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ZN-OT-yks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1109" y="282"/>
+        </scene>
+    </scenes>
+</document>
