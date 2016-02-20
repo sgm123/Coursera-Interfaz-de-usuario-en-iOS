@@ -8,33 +8,6 @@
 
 import UIKit
 
-
-enum Steps: Int {
-    case Size = 0
-    case Type
-    case Cheese
-    case Ingredients
-    
-    static let values: [Steps] = [.Size, .Type, .Cheese, .Ingredients]
-    func pretty() -> String {
-        switch self {
-        case .Size:
-            return "Tamaño"
-        case .Type:
-            return "Tipo"
-        case .Cheese:
-            return "Queso"
-        case .Ingredients:
-            return "Ingredientes"
-        }
-    }
-}
-
-private let sizes = ["chica", "mediana", "grande"]
-private let types = ["delgada", "crujiente", "gruesa"]
-private let cheeses = ["mozarela", "cheddar", "parmesano", "sin queso"]
-private let ingredients = ["jamón", "pepperoni", "pavo", "salchicha", "aceituna", "cebolla", "pimiento", "piña", "anchoa"]
-
 private var selection = [Steps: [String]]()
 
 //MARK: Actions
@@ -74,7 +47,6 @@ class SelectionViewController: UIViewController {
             let validationController = (segue.destinationViewController as! UINavigationController).viewControllers.first as! ValidationViewController
             validationController.selection = selection
         }
-        
     }
 }
 
@@ -83,16 +55,7 @@ class SelectionViewController: UIViewController {
 extension SelectionViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch currentStep {
-        case .Size:
-            return sizes.count
-        case .Type:
-            return types.count
-        case .Cheese:
-            return cheeses.count
-        case .Ingredients:
-            return ingredients.count
-        }
+        return currentStep.count()
     }
 }
 
@@ -101,17 +64,7 @@ extension SelectionViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: "default")
-        var data = [String]()
-        switch currentStep {
-        case .Size:
-            data = sizes
-        case .Type:
-            data = types
-        case .Cheese:
-            data = cheeses
-        case .Ingredients:
-            data = ingredients
-        }
+        var data = self.currentStep.data()
         let value = data[indexPath.row]
         cell.textLabel?.text = value
         
@@ -125,17 +78,7 @@ extension SelectionViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        var data = [String]()
-        switch self.currentStep {
-        case .Size:
-            data = sizes
-        case .Type:
-            data = types
-        case .Cheese:
-            data = cheeses
-        case .Ingredients:
-            data = ingredients
-        }
+        var data = self.currentStep.data()
         let value = data[indexPath.row]
         if let currrentSelection = selection[self.currentStep] where currrentSelection.contains(value) {
             // Remove

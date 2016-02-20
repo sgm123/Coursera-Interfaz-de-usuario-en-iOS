@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
+    </dependencies>
+    <scenes>
+        <!--SelectionInterfaceController-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="SelectionInterfaceController" id="AgC-eL-Hgc" customClass="SelectionInterfaceController" customModule="PizzaWatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="SXM-vT-PVY">
+                            <items>
+                                <tableRow identifier="DefaultTableRowController" id="RLk-nI-5PZ" customClass="DefaultTableRowController" customModule="PizzaWatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="cIZ-ik-feR">
+                                        <items>
+                                            <label width="100" height="100" alignment="left" verticalAlignment="center" text="Label" textAlignment="left" baselineAdjustment="alignCenters" id="6E0-jf-sNn"/>
+                                            <imageView alignment="right" verticalAlignment="center" image="Check" contentMode="scaleAspectFill" id="K90-57-sW9"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="check" destination="K90-57-sW9" id="saO-60-ORa"/>
+                                        <outlet property="mainLabel" destination="6E0-jf-sNn" id="Ry6-eq-zxp"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <group width="1" alignment="left" verticalAlignment="bottom" id="Xid-sl-hGd">
+                            <items>
+                                <button width="100" alignment="center" title="Siguiente" id="j2N-Ul-9S8">
+                                    <connections>
+                                        <action selector="nextButtonAction" destination="AgC-eL-Hgc" id="Zv5-QJ-LUX"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="nextButton" destination="j2N-Ul-9S8" id="KcP-nU-eKh"/>
+                        <outlet property="tableView" destination="SXM-vT-PVY" id="Bz3-mR-zVb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="478" y="210"/>
+        </scene>
+        <!--ValidationInterfaceController-->
+        <scene sceneID="Llv-ju-d0n">
+            <objects>
+                <controller identifier="ValidationInterfaceController" id="aeM-8J-Mpn" customClass="ValidationInterfaceController" customModule="PizzaWatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="Ecc-tD-yDm">
+                            <items>
+                                <tableRow identifier="LabelTableRowController" selectable="NO" id="FPS-YJ-8wb" customClass="LabelTableRowController" customModule="PizzaWatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="zRu-rs-hBS">
+                                        <items>
+                                            <label width="1" height="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="left" id="FVC-Q0-cqt"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="mainLabel" destination="FVC-Q0-cqt" id="7hM-jX-slk"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Confirmar" id="FZ6-5Q-pUI">
+                            <connections>
+                                <action selector="validateBUttonAction" destination="aeM-8J-Mpn" id="wN0-V9-DWF"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="tableView" destination="Ecc-tD-yDm" id="9yD-nT-AwD"/>
+                        <outlet property="validateButton" destination="FZ6-5Q-pUI" id="ErQ-E9-zWs"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="718" y="210"/>
+        </scene>
+    </scenes>
+</document>
