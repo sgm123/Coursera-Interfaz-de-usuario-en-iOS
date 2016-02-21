@@ -16,7 +16,18 @@ class ValidationInterfaceController: WKInterfaceController {
     
     var selection: [Steps: [String]]!
     @IBAction func validateBUttonAction() {
+        let acceptHandler = {
+            print("Aceptar")
+        }
+        if validateSelection() {
+            let acceptAction = WKAlertAction(title: "Aceptar", style: .Default, handler:acceptHandler)
+            presentAlertControllerWithTitle("Gracias", message: "Pedido enviado a cocina!", preferredStyle: .ActionSheet, actions: [acceptAction])
+        } else {
+            let acceptAction = WKAlertAction(title: "Aceptar", style: .Default, handler:acceptHandler)
+            presentAlertControllerWithTitle("Oops", message: "Revisa tu pedido antes de seguir!", preferredStyle: .ActionSheet, actions: [acceptAction])
+        }
     }
+    
     @IBOutlet var validateButton: WKInterfaceButton!
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -46,6 +57,15 @@ class ValidationInterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    func validateSelection() -> Bool {
+        for step in Steps.values {
+            guard let data = selection[step] where data.count > 0 else {
+                return false
+            }
+        }
+        return true
+    }
+    
     func loadData() {
         var toalData = 0
         
